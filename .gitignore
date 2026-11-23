@@ -1,0 +1,27 @@
+# SwiftPM and local release output
+.build/
+.swiftpm/
+build/
+dist/
+DerivedData/
+*.xcuserstate
+xcuserdata/
+
+# Local files and credentials
+.DS_Store
+._*
+AGENTS.md
+.env
+.env.*
+*.pem
+*.key
+*.p12
+*.pfx
+*.mobileprovision
+*.provisionprofile
+
+# Scan output and diagnostics
+*.tree
+*.log
+*.crash
+*.ips
