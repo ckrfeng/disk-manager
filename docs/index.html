@@ -2,88 +2,327 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="DiskManager is a native macOS disk space analyzer. Scan a drive, explore large folders, and decide what to keep.">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="DiskManager is a native macOS disk space analyzer. Scan a drive, explore large folders in a sunburst, and decide what to keep.">
   <meta name="color-scheme" content="dark">
+  <meta name="theme-color" content="#131418">
   <title>DiskManager — Disk space analyzer for macOS</title>
   <link rel="icon" href="icon.png">
   <link rel="stylesheet" href="style.css">
+  <script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
   <header class="frame site-header">
-    <a class="brand" href="./"><img src="icon.png" width="32" height="32" alt="">DiskManager</a>
+    <a class="brand" href="./"><img src="icon.png" width="28" height="28" alt="">DiskManager</a>
     <nav aria-label="Main navigation">
+      <a href="#features">Features</a>
       <a href="#install">Install</a>
+      <a href="#faq">Questions</a>
       <a href="https://github.com/ckrfeng/disk-manager">GitHub ↗</a>
     </nav>
+    <a class="button small" href="https://github.com/ckrfeng/disk-manager/releases/latest/download/DiskManager-macOS.zip">Download</a>
   </header>
+
   <main>
     <section class="frame hero" aria-labelledby="hero-title">
-      <p class="eyebrow">Disk space analyzer for macOS</p>
-      <h1 id="hero-title">See where your<br class="desktop-break"> space went.</h1>
-      <p class="summary">Scan a drive or folder and explore what’s taking up space, one slice at a time.</p>
-      <div class="actions">
-        <a class="button" href="https://github.com/ckrfeng/disk-manager/releases/latest/download/DiskManager-macOS.zip">
-          <span aria-hidden="true">↓</span> Download for Mac
-        </a>
-        <a class="quiet-link" href="https://github.com/ckrfeng/disk-manager/releases">All releases ↗</a>
+      <div class="hero-copy">
+        <h1 id="hero-title">See where your space went.</h1>
+        <p class="lede">Scan a drive or a folder and see what is taking up room, as an interactive sunburst. Click a slice to go deeper.</p>
+        <div class="actions">
+          <a class="button" href="https://github.com/ckrfeng/disk-manager/releases/latest/download/DiskManager-macOS.zip">Download for Mac</a>
+          <a class="quiet-link" href="https://github.com/ckrfeng/disk-manager/releases">All releases ↗</a>
+        </div>
+        <p class="requirement">macOS 14 or later · Apple silicon and Intel</p>
       </div>
-      <p class="requirement">macOS 14 or later <span>·</span> Apple silicon and Intel</p>
-    </section>
 
-    <figure class="frame preview">
-      <div class="preview-bar">
-        <div class="window-dots" aria-hidden="true"><i></i><i></i><i></i></div>
-        <span>DiskManager</span>
-        <span class="sample-label">Example scan</span>
-      </div>
-      <div class="scan">
-        <div class="chart-wrap" aria-hidden="true">
-          <div class="orbit">
-            <div class="ring outer"></div>
-            <div class="ring inner"></div>
-            <div class="chart-center"><strong>120<span> GB</span></strong><small>Space scanned</small></div>
+      <div class="app-window home-window" data-ui role="img" aria-label="DiskManager's home screen, listing three drives with their free space and a Scan button for each">
+        <div class="win-bar"><span class="lights" aria-hidden="true"><i></i><i></i><i></i></span></div>
+        <div class="home">
+          <div class="home-head">
+            <img class="app-icon" src="icon.png" width="64" height="64" alt="">
+            <p class="home-title">DiskManager</p>
+            <p class="home-sub">Find out what’s taking up your disk space.</p>
+          </div>
+          <ul class="disk-list" aria-hidden="true">
+            <li class="disk-row">
+              <span class="drive drive-mac"></span>
+              <div class="disk-main">
+                <div class="disk-name">Macintosh HD <span class="fs">APFS</span></div>
+                <div class="disk-bar"><i class="used-hot" style="width: 82%"></i></div>
+              </div>
+              <div class="disk-space">90.15 GB free of 500 GB</div>
+              <span class="scan-btn">Scan<span class="chev"></span></span>
+            </li>
+            <li class="disk-row">
+              <span class="drive drive-ext"></span>
+              <div class="disk-main">
+                <div class="disk-name">External SSD <span class="fs">APFS</span></div>
+                <div class="disk-bar"><i class="used-ok" style="width: 18%"></i></div>
+              </div>
+              <div class="disk-space">1.6 TB free of 2 TB</div>
+              <span class="scan-btn">Scan<span class="chev"></span></span>
+            </li>
+            <li class="disk-row">
+              <span class="drive drive-archive"></span>
+              <div class="disk-main">
+                <div class="disk-name">Archive <span class="fs">HFS+</span></div>
+                <div class="disk-bar"><i class="used-ok" style="width: 59%"></i></div>
+              </div>
+              <div class="disk-space">412 GB free of 1 TB</div>
+              <span class="scan-btn">Scan<span class="chev"></span></span>
+            </li>
+          </ul>
+          <div class="home-foot" aria-hidden="true">
+            <span class="btn"><span class="ico ico-folder"></span>Scan Folder…</span>
+            <span class="btn"><span class="ico ico-clock"></span>Snapshots…</span>
+            <span class="hint">or drop a folder anywhere in this window</span>
           </div>
         </div>
-        <div class="scan-legend">
-          <h2>Example Drive</h2>
-          <p>Largest folders</p>
-          <ul>
-            <li><i class="swatch footage"></i>Footage <strong>48 GB</strong></li>
-            <li><i class="swatch projects"></i>Projects <strong>30 GB</strong></li>
-            <li><i class="swatch downloads"></i>Downloads <strong>24 GB</strong></li>
-            <li><i class="swatch other"></i>Other <strong>18 GB</strong></li>
-          </ul>
-        </div>
       </div>
-      <figcaption>A sample drive with fictional files and sizes.</figcaption>
-    </figure>
-
-    <section class="frame features" aria-label="Features">
-      <article><h2>Drill into folders</h2><p>Follow the largest slices, preview files with Quick Look, or reveal them in Finder.</p></article>
-      <article><h2>Review before you delete</h2><p>Collect items in one place and check the total size before moving them to the Trash.</p></article>
-      <article><h2>Keep scans on your Mac</h2><p>File names, paths, and sizes are processed locally. The app includes no analytics or scan uploads.</p></article>
     </section>
 
-    <section class="frame install" id="install" aria-labelledby="install-title">
-      <div><p class="eyebrow">Get started</p><h2 id="install-title">Install on your Mac</h2></div>
-      <div>
+    <section class="frame features" id="features" aria-labelledby="features-title">
+      <h2 id="features-title">Find it, then decide.</h2>
+
+      <article class="module reveal">
+        <div class="app-window small-window" data-ui aria-hidden="true">
+          <div class="win-bar"><span class="lights"><i></i><i></i><i></i></span></div>
+          <div class="home-foot standalone">
+            <span class="btn"><span class="ico ico-folder"></span>Scan Folder…</span>
+            <span class="btn"><span class="ico ico-clock"></span>Snapshots…</span>
+          </div>
+          <ul class="disk-list">
+            <li class="disk-row">
+              <span class="drive drive-mac"></span>
+              <div class="disk-main">
+                <div class="disk-name">Macintosh HD <span class="fs">APFS</span></div>
+                <div class="disk-bar"><i class="used-hot" style="width: 82%"></i></div>
+              </div>
+              <div class="disk-space">90.15 GB free of 500 GB</div>
+              <span class="scan-btn">Scan<span class="chev"></span></span>
+            </li>
+          </ul>
+        </div>
+        <div class="module-text">
+          <h3>Pick what to scan</h3>
+          <p>Choose a mounted drive, or click Scan Folder. You can also drop a folder anywhere in the window.</p>
+        </div>
+      </article>
+
+      <article class="module reveal">
+        <div class="app-window scan-window" data-ui>
+          <div class="win-bar"><span class="lights" aria-hidden="true"><i></i><i></i><i></i></span></div>
+          <div id="scan-view">
+          <div class="scan-top">
+            <button class="back" id="back-disks" type="button"><span class="chev-left"></span>Disks</button>
+            <nav class="crumbs" id="crumbs" aria-label="Current folder"></nav>
+            <span class="admin"><span class="lock"></span>Administrator</span>
+            <span class="more" aria-hidden="true">···</span>
+          </div>
+          <div class="scan-body">
+            <div class="chart-wrap">
+              <div class="orbit" id="orbit">
+                <svg id="sunburst" viewBox="0 0 400 400" role="group" aria-label="Sunburst chart of a sample drive"></svg>
+                <div class="chart-center" id="center" role="button" tabindex="0" aria-label="Go back up one level">
+                  <strong></strong><small></small>
+                </div>
+              </div>
+            </div>
+            <div class="side">
+              <div class="side-head">
+                <span class="folder-big" aria-hidden="true"></span>
+                <div>
+                  <p class="side-title" id="legend-title"></p>
+                  <p class="side-sub" id="legend-sub"></p>
+                </div>
+              </div>
+              <ul id="legend"></ul>
+            </div>
+          </div>
+          <div class="collector"><span class="inbox"></span>Drag files and folders here to collect them for deletion.</div>
+          </div>
+          <div id="disks-view" hidden>
+            <ul class="disk-list">
+              <li class="disk-row">
+                <span class="drive drive-mac"></span>
+                <div class="disk-main">
+                  <div class="disk-name">Macintosh HD <span class="fs">APFS</span></div>
+                  <div class="disk-bar"><i class="used-hot" style="width: 82%"></i></div>
+                </div>
+                <div class="disk-space">90.15 GB free of 500 GB</div>
+                <button class="scan-btn" type="button">Scan<span class="chev"></span></button>
+              </li>
+              <li class="disk-row">
+                <span class="drive drive-ext"></span>
+                <div class="disk-main">
+                  <div class="disk-name">External SSD <span class="fs">APFS</span></div>
+                  <div class="disk-bar"><i class="used-ok" style="width: 18%"></i></div>
+                </div>
+                <div class="disk-space">1.6 TB free of 2 TB</div>
+                <button class="scan-btn" type="button">Scan<span class="chev"></span></button>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="module-text">
+          <h3>Go deeper into the big slices</h3>
+          <p>Click a folder to drill down. Show an item in Finder, or preview it with Quick Look.</p>
+        </div>
+      </article>
+
+      <article class="module reveal">
+        <div class="app-window review-window" data-ui aria-hidden="true">
+          <div class="win-bar"><span class="lights"><i></i><i></i><i></i></span></div>
+          <div class="review">
+            <p class="review-head">3 items · 14.2 GB</p>
+            <ul class="review-list">
+              <li><span class="ico ico-folder"></span><span class="name">Video exports 2024</span><strong>9.8 GB</strong></li>
+              <li><span class="ico ico-folder"></span><span class="name">Xcode Simulators</span><strong>3.1 GB</strong></li>
+              <li><span class="ico ico-file"></span><span class="name">Old installers</span><strong>1.3 GB</strong></li>
+            </ul>
+            <div class="review-actions">
+              <span class="btn primary">Move to Trash</span>
+              <span class="danger">Delete permanently…</span>
+            </div>
+          </div>
+        </div>
+        <div class="module-text">
+          <h3>Review before anything goes</h3>
+          <p>Collect items in one place, then send them to the Trash, or delete permanently only if you choose to.</p>
+        </div>
+      </article>
+      <article class="module reveal">
+        <div class="app-window review-window" data-ui aria-hidden="true">
+          <div class="win-bar"><span class="lights"><i></i><i></i><i></i></span></div>
+          <div class="review">
+            <p class="review-head">Local snapshots · 26 GB</p>
+            <ul class="review-list">
+              <li><span class="ico ico-clock"></span><span class="name">Snapshot 2026-11-20, 09:14</span><strong>12 GB</strong></li>
+              <li><span class="ico ico-clock"></span><span class="name">Snapshot 2026-11-18, 21:02</span><strong>8 GB</strong></li>
+              <li><span class="ico ico-clock"></span><span class="name">Snapshot 2026-11-12, 07:40</span><strong>6 GB</strong></li>
+            </ul>
+            <div class="review-actions">
+              <span class="btn">Remove snapshot…</span>
+              <span class="muted-note">Asks for administrator access</span>
+            </div>
+          </div>
+        </div>
+        <div class="module-text">
+          <h3>Account for hidden space</h3>
+          <p>A volume scan can show space it could not reach. DiskManager lists local APFS snapshots and asks for administrator access only when a scan needs it.</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="frame stages reveal" aria-labelledby="stages-title">
+      <div class="stage-copy">
+        <h2 id="stages-title">Scan, explore, review.</h2>
+        <p class="stage-clause" id="stage-clause" aria-live="polite">Choose a drive or folder to scan.</p>
+        <label class="stage-slider">
+          <span class="visually-hidden">Stage</span>
+          <input type="range" id="stage" min="0" max="2" step="1" value="0" aria-describedby="stage-names">
+        </label>
+        <div class="stage-names" id="stage-names" aria-hidden="true">
+          <span data-stage-name="0">Scan</span>
+          <span data-stage-name="1">Explore</span>
+          <span data-stage-name="2">Review</span>
+        </div>
+      </div>
+      <div class="stage-view" data-stage="0">
+        <div class="app-window small-window" data-view="0" data-ui aria-hidden="true">
+          <div class="win-bar"><span class="lights"><i></i><i></i><i></i></span></div>
+          <ul class="disk-list">
+            <li class="disk-row">
+              <span class="drive drive-ext"></span>
+              <div class="disk-main">
+                <div class="disk-name">External SSD <span class="fs">APFS</span></div>
+                <div class="disk-bar"><i class="used-ok" style="width: 18%"></i></div>
+              </div>
+              <div class="disk-space">1.6 TB free of 2 TB</div>
+              <span class="scan-btn">Scan<span class="chev"></span></span>
+            </li>
+          </ul>
+        </div>
+        <div class="app-window small-window" data-view="1" data-ui aria-hidden="true">
+          <div class="win-bar"><span class="lights"><i></i><i></i><i></i></span></div>
+          <ul class="folder-list">
+            <li><span class="swatch" style="background: rgb(61,155,242)"></span><span class="name">Movies ›</span><strong>96 GB</strong></li>
+            <li><span class="swatch" style="background: rgb(47,190,160)"></span><span class="name">Developer ›</span><strong>52 GB</strong></li>
+            <li><span class="swatch" style="background: rgb(120,200,90)"></span><span class="name">Downloads ›</span><strong>27 GB</strong></li>
+            <li><span class="swatch" style="background: rgb(230,190,70)"></span><span class="name">Music ›</span><strong>24 GB</strong></li>
+          </ul>
+        </div>
+        <div class="app-window review-window" data-view="2" data-ui aria-hidden="true">
+          <div class="win-bar"><span class="lights"><i></i><i></i><i></i></span></div>
+          <div class="review">
+            <p class="review-head">1 item · 3.1 GB</p>
+            <ul class="review-list">
+              <li><span class="ico ico-folder"></span><span class="name">Xcode Simulators</span><strong>3.1 GB</strong></li>
+            </ul>
+            <div class="review-actions"><span class="btn primary">Move to Trash</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="frame install reveal" id="install" aria-labelledby="install-title">
+      <h2 id="install-title">Install on your Mac</h2>
+      <div class="install-body">
         <ol>
           <li>Download and unzip <strong>DiskManager-macOS.zip</strong>.</li>
           <li>Move <strong>DiskManager.app</strong> to Applications and open it.</li>
-          <li>Choose a drive or drop a folder into the app to start a scan.</li>
+          <li>Choose a drive, or drop a folder onto the window, to start a scan.</li>
         </ol>
-        <p>The download uses an ad-hoc signature and is distributed without Apple notarization. If macOS blocks the first launch, check that the zip came from this project and see <a href="https://support.apple.com/en-us/102445">Apple’s instructions</a>.</p>
-        <p><a href="https://github.com/ckrfeng/disk-manager/releases/latest/download/DiskManager-macOS.zip.sha256">Download SHA-256 checksum</a></p>
+        <div>
+          <p>The app is ad-hoc signed and not notarized by Apple. If macOS blocks the first launch, check that the zip came from this project, then follow <a href="https://support.apple.com/en-us/102445">Apple’s instructions</a>.</p>
+          <p><a href="https://github.com/ckrfeng/disk-manager/releases/latest/download/DiskManager-macOS.zip.sha256">Download the SHA-256 checksum</a></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="frame faq reveal" id="faq" aria-labelledby="faq-title">
+      <h2 id="faq-title">Questions</h2>
+      <details>
+        <summary>Does it upload my files?</summary>
+        <p>No. File names, paths and sizes are processed on your Mac. The app has no analytics and uploads no scan results.</p>
+      </details>
+      <details>
+        <summary>What happens when I delete something?</summary>
+        <p>Items sent to the Trash free up space once you empty the Trash. Permanent deletion cannot be undone, so the app asks you to choose it explicitly.</p>
+      </details>
+      <details>
+        <summary>Why does macOS block it the first time?</summary>
+        <p>The download is ad-hoc signed and not notarized. Check the checksum and that the zip came from this project’s releases before you allow the app to open.</p>
+      </details>
+      <details>
+        <summary>Does it need administrator access?</summary>
+        <p>Only for an administrator scan or when removing a snapshot. The app asks first.</p>
+      </details>
+      <details>
+        <summary>Which Macs does it run on?</summary>
+        <p>macOS 14 Sonoma or later, on Apple silicon and Intel Macs.</p>
+      </details>
+    </section>
+
+    <section class="frame closing reveal" aria-labelledby="closing-title">
+      <h2 id="closing-title">Find out where your space went.</h2>
+      <div class="actions">
+        <a class="button" href="https://github.com/ckrfeng/disk-manager/releases/latest/download/DiskManager-macOS.zip">Download for Mac</a>
+        <a class="quiet-link" href="https://github.com/ckrfeng/disk-manager">Source on GitHub ↗</a>
       </div>
     </section>
   </main>
+
   <footer class="frame site-footer">
     <span>DiskManager</span>
     <nav aria-label="Project links">
       <a href="https://github.com/ckrfeng/disk-manager/blob/main/LICENSE">MIT license</a>
       <a href="https://github.com/ckrfeng/disk-manager/issues">Issues ↗</a>
     </nav>
+    <span>© 2026</span>
   </footer>
+
+  <script src="sample-scan.js"></script>
+  <script src="page.js"></script>
 </body>
 </html>
