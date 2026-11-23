@@ -10,6 +10,11 @@
   --projects: #b8d87e;
   --downloads: #edd68b;
   --other: #91abd9;
+  /* Darker shades of each category colour, used for the outer ring's second slice */
+  --footage-dim: color-mix(in srgb, var(--footage) 62%, #0b1112);
+  --projects-dim: color-mix(in srgb, var(--projects) 62%, #0b1112);
+  --downloads-dim: color-mix(in srgb, var(--downloads) 62%, #0b1112);
+  --other-dim: color-mix(in srgb, var(--other) 62%, #0b1112);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -36,8 +41,8 @@ nav a:hover, .quiet-link:hover { color: var(--mint); text-decoration: underline;
   font-family: ui-monospace, "SF Mono", Menlo, monospace;
 }
 .eyebrow { margin: 0; color: var(--mint); text-transform: uppercase; font-size: .76rem; letter-spacing: .14em; }
-h1 { font-size: clamp(3rem, 9vw, 7.1rem); letter-spacing: -.083em; line-height: .93; margin: .2em 0 .23em; }
-.summary { margin: 0 auto 1.55rem; color: var(--muted); max-width: 30rem; font-size: clamp(1rem, 2.5vw, 1.22rem); line-height: 1.55; }
+h1 { font-size: clamp(3rem, 9vw, 7.1rem); letter-spacing: -.045em; line-height: 1; margin: .2em 0 .3em; text-wrap: balance; }
+.summary { margin: 0 auto 1.55rem; color: var(--muted); max-width: 30rem; font-size: clamp(1rem, 2.5vw, 1.22rem); line-height: 1.55; text-wrap: balance; }
 .actions { display: flex; align-items: center; justify-content: center; gap: 1.15rem; flex-wrap: wrap; }
 .button {
   display: inline-flex;
@@ -49,10 +54,12 @@ h1 { font-size: clamp(3rem, 9vw, 7.1rem); letter-spacing: -.083em; line-height: 
   padding: .85rem 1.25rem;
   font-weight: 750;
   text-decoration: none;
+  transition: background-color .2s ease-out, transform .15s ease-out;
 }
 .button:hover { background: #cdfbe1; }
+.button:active { transform: scale(.98); }
 .button span { font-size: 1.2em; line-height: 1; }
-.requirement { color: var(--muted); font-size: .75rem; line-height: 1.6; margin: 1rem 0 0; }
+.requirement { color: var(--muted); font-size: .8rem; line-height: 1.6; margin: 1rem 0 0; text-wrap: balance; }
 .requirement span { margin-inline: .25em; }
 
 .preview {
@@ -77,16 +84,16 @@ h1 { font-size: clamp(3rem, 9vw, 7.1rem); letter-spacing: -.083em; line-height: 
 }
 .window-dots { display: flex; gap: .35rem; }
 .window-dots i { width: .6rem; height: .6rem; border-radius: 50%; background: #687b72; }
-.sample-label { justify-self: end; font-size: .7rem; font-weight: 400; color: var(--muted); }
+.sample-label { justify-self: end; font-size: .72rem; font-weight: 400; color: var(--muted); white-space: nowrap; }
 .scan { display: grid; grid-template-columns: 1.15fr 1fr; align-items: center; gap: clamp(1rem, 4vw, 3rem); padding: clamp(1rem, 4vw, 2.8rem); }
 .chart-wrap { display: grid; place-items: center; min-width: 0; }
 .orbit { position: relative; isolation: isolate; display: grid; place-items: center; width: min(100%, 21rem); aspect-ratio: 1; }
 .ring, .chart-center { position: absolute; border-radius: 50%; }
 .outer { inset: 0; background: conic-gradient(from -90deg,
-  #7ee3ba 0 16%, #101918 16% 16.6%, #479e7d 16.6% 39.4%, #101918 39.4% 40%,
-  #c9e598 40% 54%, #101918 54% 54.6%, #8eab55 54.6% 64.4%, #101918 64.4% 65%,
-  #f6de9b 65% 75.5%, #101918 75.5% 76.1%, #b49b5e 76.1% 84.4%, #101918 84.4% 85%,
-  #a3b9e2 85% 94.5%, #101918 94.5% 95.1%, #657fab 95.1% 99.4%, #101918 99.4%); }
+  var(--footage) 0 16%, #101918 16% 16.6%, var(--footage-dim) 16.6% 39.4%, #101918 39.4% 40%,
+  var(--projects) 40% 54%, #101918 54% 54.6%, var(--projects-dim) 54.6% 64.4%, #101918 64.4% 65%,
+  var(--downloads) 65% 75.5%, #101918 75.5% 76.1%, var(--downloads-dim) 76.1% 84.4%, #101918 84.4% 85%,
+  var(--other) 85% 94.5%, #101918 94.5% 95.1%, var(--other-dim) 95.1% 99.4%, #101918 99.4%); }
 .inner { inset: 16%; border: 2px solid #101918; background: conic-gradient(from -90deg,
   var(--footage) 0 39.4%, #101918 39.4% 40%, var(--projects) 40% 64.4%, #101918 64.4% 65%,
   var(--downloads) 65% 84.4%, #101918 84.4% 85%, var(--other) 85% 99.4%, #101918 99.4%); }
