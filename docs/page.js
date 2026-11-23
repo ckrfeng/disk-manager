@@ -1,34 +1,24 @@
-// Stage slider and entrance motion for the DiskManager page.
-// Without JavaScript the page shows everything: stage 1 is the default and .reveal only hides when `js` is set.
+// Scroll story and entrance motion for the DiskManager page.
+// Without JavaScript the first step and its view show, and .reveal only hides when `js` is set.
 (function () {
   "use strict";
 
-  var clauses = [
-    "Choose a drive or folder to scan.",
-    "Click through the sunburst to find the big items.",
-    "Collect what you want gone and check the total."
-  ];
-
-  var slider = document.getElementById("stage");
-  var clause = document.getElementById("stage-clause");
-  var view = document.querySelector(".stage-view");
-  var names = document.querySelectorAll("[data-stage-name]");
-
-  function setStage(value) {
-    var stage = String(value);
-    view.setAttribute("data-stage", stage);
-    clause.textContent = clauses[Number(stage)];
-    slider.setAttribute("aria-valuetext", clauses[Number(stage)]);
-    names.forEach(function (name) {
-      name.classList.toggle("current", name.getAttribute("data-stage-name") === stage);
-    });
+  // The story: the step nearest the middle of the screen decides which app view shows
+  var stage = document.querySelector(".story-stage");
+  var steps = document.querySelectorAll(".story-step");
+  if (stage && steps.length && "IntersectionObserver" in window) {
+    var storyObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        var current = entry.target;
+        stage.setAttribute("data-active", current.getAttribute("data-step"));
+        steps.forEach(function (step) { step.classList.toggle("is-current", step === current); });
+      });
+    }, { rootMargin: "-45% 0px -45% 0px", threshold: 0 });
+    steps.forEach(function (step) { storyObserver.observe(step); });
   }
 
-  if (slider && view && clause) {
-    slider.addEventListener("input", function () { setStage(slider.value); });
-    setStage(slider.value);
-  }
-
+  // Sections rise in as they enter
   var reveals = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window) {
     var observer = new IntersectionObserver(function (entries) {
@@ -44,4 +34,3 @@
     reveals.forEach(function (el) { el.classList.add("is-in"); });
   }
 })();
-

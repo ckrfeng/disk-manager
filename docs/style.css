@@ -217,8 +217,8 @@ nav a:hover { color: var(--ink); }
   cursor: pointer;
 }
 /* Text in the centre scales with the chart, so it stays inside the disc at any width */
-.chart-center strong { font-size: clamp(.6rem, 6.5cqi, 1.25rem); font-weight: 600; white-space: nowrap; line-height: 1.1; }
-.chart-center small { font-size: clamp(.5rem, 5cqi, .8125rem); color: var(--muted); white-space: nowrap; max-width: 100%; overflow: hidden; text-overflow: ellipsis; }
+.chart-center strong { font-size: clamp(.55rem, 3.2cqi, 1rem); font-weight: 600; line-height: 1.15; max-width: 80%; text-align: center; text-wrap: balance; }
+.chart-center small { font-size: clamp(.5rem, 2.8cqi, .75rem); color: var(--muted); white-space: nowrap; max-width: 84%; overflow: hidden; text-overflow: ellipsis; text-align: center; }
 
 .side { padding: 8px 16px 16px 8px; min-width: 0; }
 .side-head { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
@@ -302,24 +302,25 @@ button.row { cursor: pointer; }
 .module-text h3 { margin: 0 0 .6rem; font-size: 1.35rem; font-weight: 500; letter-spacing: -.02em; }
 .module-text p { margin: 0; color: var(--muted); max-width: 30rem; line-height: 1.55; }
 
-/* How it works: one slider chooses the view and the sentence */
-.stages {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
-  gap: clamp(2rem, 5vw, 5rem);
-  align-items: center;
-  padding-block: clamp(3rem, 7vw, 5.5rem);
-}
-.stages h2 { margin-bottom: 1.5rem; }
-.stage-clause { font-size: clamp(1.4rem, 2.4vw, 1.9rem); line-height: 1.25; letter-spacing: -.02em; margin: 0 0 2rem; min-height: 4.5em; }
-.stage-slider input { width: 100%; accent-color: var(--accent); margin: 0; }
-.stage-names { display: flex; justify-content: space-between; color: var(--muted); font-size: .9rem; margin-top: .5rem; }
-.stage-names .current { color: var(--ink); font-weight: 600; }
-.stage-view [data-view] { display: none; }
-.stage-view[data-stage="0"] [data-view="0"],
-.stage-view[data-stage="1"] [data-view="1"],
-.stage-view[data-stage="2"] [data-view="2"] { display: block; }
-.stage-view .app-window { width: 100%; }
+/* Scroll story: the steps scroll past on the left while the app window stays put on the right */
+.story { padding-block: clamp(3rem, 7vw, 5.5rem); }
+.story-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: clamp(2rem, 5vw, 5rem); align-items: start; }
+.story h2 { font-size: clamp(2rem, 3.8vw, 3rem); font-weight: 500; letter-spacing: -.04em; line-height: 1.05; margin: 0 0 2rem; text-wrap: balance; }
+.story-step { min-height: 62vh; display: flex; flex-direction: column; justify-content: center; opacity: .4; transition: opacity 300ms ease-out; }
+.story-step.is-current { opacity: 1; }
+.story-step h3 { font-size: 1.75rem; font-weight: 500; letter-spacing: -.02em; margin: 0 0 .6rem; }
+.story-step p { margin: 0; color: var(--muted); max-width: 28rem; line-height: 1.6; font-size: 1.05rem; }
+.story-stage { position: sticky; top: 14vh; }
+.story-stage .app-window { min-height: 440px; }
+.story-view { display: none; }
+.story-stage[data-active="scan"] [data-view="scan"],
+.story-stage[data-active="explore"] [data-view="explore"],
+.story-stage[data-active="review"] [data-view="review"] { display: block; }
+.scan-note { margin: 4px 16px 18px; color: var(--muted); font-size: .875rem; }
+.explore-head { display: flex; align-items: center; gap: 12px; padding: 6px 16px 14px; }
+.story-crumbs { margin: 0 16px 10px; color: var(--muted); font-size: .8125rem; }
+.story-stage .folder-list { padding: 0 16px 16px; }
+.story-stage .folder-list .row { grid-template-columns: auto auto minmax(0, 1fr) auto; }
 
 /* Install */
 .install { padding-block: clamp(3rem, 7vw, 5.5rem); }
@@ -408,7 +409,10 @@ button.row { cursor: pointer; }
   .scan-body { grid-template-columns: 1fr; }
   .orbit { width: min(86%, 300px); }
   .side { padding: 0 16px 12px; }
-  .module, .stages, .install-body, .faq { grid-template-columns: 1fr; }
+  .module, .story-grid, .install-body, .faq { grid-template-columns: 1fr; }
+  .story-stage { position: static; }
+  .story-view { display: block; }
+  .story-step { min-height: 0; padding-block: 1.5rem; opacity: 1; }
   .faq > h2 { grid-row: auto; position: static; margin-bottom: 2rem; }
   .faq details { grid-column: 1; }
   .module { gap: 1.25rem; }

@@ -214,52 +214,78 @@
       </article>
     </section>
 
-    <section class="frame stages reveal" aria-labelledby="stages-title">
-      <div class="stage-copy">
-        <h2 id="stages-title">Scan, explore, review.</h2>
-        <p class="stage-clause" id="stage-clause" aria-live="polite">Choose a drive or folder to scan.</p>
-        <label class="stage-slider">
-          <span class="visually-hidden">Stage</span>
-          <input type="range" id="stage" min="0" max="2" step="1" value="0" aria-describedby="stage-names">
-        </label>
-        <div class="stage-names" id="stage-names" aria-hidden="true">
-          <span data-stage-name="0">Scan</span>
-          <span data-stage-name="1">Explore</span>
-          <span data-stage-name="2">Review</span>
+    <section class="frame story" id="stages" aria-labelledby="stages-title">
+      <div class="story-grid">
+        <div class="story-steps">
+          <h2 id="stages-title">Scan, explore, review.</h2>
+          <div class="story-step is-current" data-step="scan">
+            <h3>Scan</h3>
+            <p>Pick a drive, or a folder, and start the scan.</p>
+          </div>
+          <div class="story-step" data-step="explore">
+            <h3>Explore</h3>
+            <p>Click a slice to open its folder. The path at the top takes you back up, and so does the centre of the chart.</p>
+          </div>
+          <div class="story-step" data-step="review">
+            <h3>Review</h3>
+            <p>Drag what you want gone into the review area, check the total, then send it to the Trash.</p>
+          </div>
         </div>
-      </div>
-      <div class="stage-view" data-stage="0">
-        <div class="app-window small-window" data-view="0" data-ui aria-hidden="true">
-          <div class="win-bar"><span class="lights"><i></i><i></i><i></i></span></div>
-          <ul class="disk-list">
-            <li class="disk-row">
-              <span class="drive drive-ext"></span>
-              <div class="disk-main">
-                <div class="disk-name">External SSD <span class="fs">APFS</span></div>
-                <div class="disk-bar"><i class="used-ok" style="width: 18%"></i></div>
+
+        <div class="story-stage" data-active="scan">
+          <div class="app-window" data-ui>
+            <div class="win-bar"><span class="lights" aria-hidden="true"><i></i><i></i><i></i></span></div>
+
+            <div class="story-view" data-view="scan">
+              <ul class="disk-list">
+                <li class="disk-row">
+                  <span class="drive drive-mac"></span>
+                  <div class="disk-main">
+                    <div class="disk-name">Macintosh HD <span class="fs">APFS</span></div>
+                    <div class="disk-bar"><i class="used-ok" style="width: 64%"></i></div>
+                  </div>
+                  <div class="disk-space">Scanning…</div>
+                  <span class="scan-btn">Stop</span>
+                </li>
+              </ul>
+              <p class="scan-note">318,402 files found so far</p>
+            </div>
+
+            <div class="story-view" data-view="explore">
+              <div class="explore-head">
+                <span class="folder-big" aria-hidden="true"></span>
+                <div>
+                  <p class="side-title">User 1</p>
+                  <p class="side-sub">164.17 GB · 8 items</p>
+                </div>
               </div>
-              <div class="disk-space">1.6 TB free of 2 TB</div>
-              <span class="scan-btn">Scan<span class="chev"></span></span>
-            </li>
-          </ul>
-        </div>
-        <div class="app-window small-window" data-view="1" data-ui aria-hidden="true">
-          <div class="win-bar"><span class="lights"><i></i><i></i><i></i></span></div>
-          <ul class="folder-list">
-            <li><span class="swatch" style="background: rgb(61,155,242)"></span><span class="name">Movies ›</span><strong>96 GB</strong></li>
-            <li><span class="swatch" style="background: rgb(47,190,160)"></span><span class="name">Developer ›</span><strong>52 GB</strong></li>
-            <li><span class="swatch" style="background: rgb(120,200,90)"></span><span class="name">Downloads ›</span><strong>27 GB</strong></li>
-            <li><span class="swatch" style="background: rgb(230,190,70)"></span><span class="name">Music ›</span><strong>24 GB</strong></li>
-          </ul>
-        </div>
-        <div class="app-window review-window" data-view="2" data-ui aria-hidden="true">
-          <div class="win-bar"><span class="lights"><i></i><i></i><i></i></span></div>
-          <div class="review">
-            <p class="review-head">1 item · 3.1 GB</p>
-            <ul class="review-list">
-              <li><span class="ico ico-folder"></span><span class="name">Xcode Simulators</span><strong>3.1 GB</strong></li>
-            </ul>
-            <div class="review-actions"><span class="btn primary">Move to Trash</span></div>
+              <p class="story-crumbs">Macintosh HD › Users › User 1</p>
+              <ul class="folder-list">
+                <li class="row"><span class="swatch" style="background: rgb(90,160,230)"></span><span class="ico ico-folder"></span><span class="name">Movies</span><strong>53.01 GB</strong></li>
+                <li class="row"><span class="swatch" style="background: rgb(90,160,230)"></span><span class="ico ico-folder"></span><span class="name">Library</span><strong>41.66 GB</strong></li>
+                <li class="row"><span class="swatch" style="background: rgb(90,160,230)"></span><span class="ico ico-folder"></span><span class="name">Documents</span><strong>32.48 GB</strong></li>
+                <li class="row"><span class="swatch" style="background: rgb(90,160,230)"></span><span class="ico ico-folder"></span><span class="name">Downloads</span><strong>17.02 GB</strong></li>
+                <li class="row"><span class="swatch" style="background: rgb(90,160,230)"></span><span class="ico ico-folder"></span><span class="name">Developer</span><strong>9.14 GB</strong></li>
+                <li class="row"><span class="swatch" style="background: rgb(90,160,230)"></span><span class="ico ico-folder"></span><span class="name">Music</span><strong>6.74 GB</strong></li>
+                <li class="row"><span class="swatch" style="background: rgb(90,160,230)"></span><span class="ico ico-folder"></span><span class="name">Pictures</span><strong>3.26 GB</strong></li>
+                <li class="row"><span class="swatch" style="background: rgb(90,160,230)"></span><span class="ico ico-folder"></span><span class="name">.Trash</span><strong>881 MB</strong></li>
+              </ul>
+            </div>
+
+            <div class="story-view" data-view="review">
+              <div class="review">
+                <p class="review-head">3 items · 14.2 GB</p>
+                <ul class="review-list">
+                  <li><span class="ico ico-folder"></span><span class="name">Video exports 2024</span><strong>9.8 GB</strong></li>
+                  <li><span class="ico ico-folder"></span><span class="name">Xcode Simulators</span><strong>3.1 GB</strong></li>
+                  <li><span class="ico ico-file"></span><span class="name">Old installers</span><strong>1.3 GB</strong></li>
+                </ul>
+                <div class="review-actions">
+                  <span class="btn primary">Move to Trash</span>
+                  <span class="danger">Delete permanently…</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
