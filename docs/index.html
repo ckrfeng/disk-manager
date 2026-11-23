@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="DiskManager is a native macOS disk space analyzer. Scan a drive, explore large folders, and decide what to keep.">
+  <meta name="color-scheme" content="dark">
+  <title>DiskManager — Disk space analyzer for macOS</title>
+  <link rel="icon" href="icon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="frame site-header">
+    <a class="brand" href="./"><img src="icon.png" width="32" height="32" alt="">DiskManager</a>
+    <nav aria-label="Main navigation">
+      <a href="#install">Install</a>
+      <a href="https://github.com/ckrfeng/disk-manager">GitHub ↗</a>
+    </nav>
+  </header>
+  <main>
+    <section class="frame hero" aria-labelledby="hero-title">
+      <p class="eyebrow">Disk space analyzer for macOS</p>
+      <h1 id="hero-title">See where your<br class="desktop-break"> space went.</h1>
+      <p class="summary">Scan a drive or folder and explore what’s taking up space, one slice at a time.</p>
+      <div class="actions">
+        <a class="button" href="https://github.com/ckrfeng/disk-manager/releases/latest/download/DiskManager-macOS.zip">
+          <span aria-hidden="true">↓</span> Download for Mac
+        </a>
+        <a class="quiet-link" href="https://github.com/ckrfeng/disk-manager/releases">All releases ↗</a>
+      </div>
+      <p class="requirement">macOS 14 or later <span>·</span> Apple silicon and Intel</p>
+    </section>
+
+    <figure class="frame preview">
+      <div class="preview-bar">
+        <div class="window-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+        <span>DiskManager</span>
+        <span class="sample-label">Example scan</span>
+      </div>
+      <div class="scan">
+        <div class="chart-wrap" aria-hidden="true">
+          <div class="orbit">
+            <div class="ring outer"></div>
+            <div class="ring inner"></div>
+            <div class="chart-center"><strong>120<span> GB</span></strong><small>Space scanned</small></div>
+          </div>
+        </div>
+        <div class="scan-legend">
+          <h2>Example Drive</h2>
+          <p>Largest folders</p>
+          <ul>
+            <li><i class="swatch footage"></i>Footage <strong>48 GB</strong></li>
+            <li><i class="swatch projects"></i>Projects <strong>30 GB</strong></li>
+            <li><i class="swatch downloads"></i>Downloads <strong>24 GB</strong></li>
+            <li><i class="swatch other"></i>Other <strong>18 GB</strong></li>
+          </ul>
+        </div>
+      </div>
+      <figcaption>A sample drive with fictional files and sizes.</figcaption>
+    </figure>
+
+    <section class="frame features" aria-label="Features">
+      <article><h2>Drill into folders</h2><p>Follow the largest slices, preview files with Quick Look, or reveal them in Finder.</p></article>
+      <article><h2>Review before you delete</h2><p>Collect items in one place and check the total size before moving them to the Trash.</p></article>
+      <article><h2>Keep scans on your Mac</h2><p>File names, paths, and sizes are processed locally. The app includes no analytics or scan uploads.</p></article>
+    </section>
+
+    <section class="frame install" id="install" aria-labelledby="install-title">
+      <div><p class="eyebrow">Get started</p><h2 id="install-title">Install on your Mac</h2></div>
+      <div>
+        <ol>
+          <li>Download and unzip <strong>DiskManager-macOS.zip</strong>.</li>
+          <li>Move <strong>DiskManager.app</strong> to Applications and open it.</li>
+          <li>Choose a drive or drop a folder into the app to start a scan.</li>
+        </ol>
+        <p>The download uses an ad-hoc signature and is distributed without Apple notarization. If macOS blocks the first launch, check that the zip came from this project and see <a href="https://support.apple.com/en-us/102445">Apple’s instructions</a>.</p>
+        <p><a href="https://github.com/ckrfeng/disk-manager/releases/latest/download/DiskManager-macOS.zip.sha256">Download SHA-256 checksum</a></p>
+      </div>
+    </section>
+  </main>
+  <footer class="frame site-footer">
+    <span>DiskManager</span>
+    <nav aria-label="Project links">
+      <a href="https://github.com/ckrfeng/disk-manager/blob/main/LICENSE">MIT license</a>
+      <a href="https://github.com/ckrfeng/disk-manager/issues">Issues ↗</a>
+    </nav>
+  </footer>
+</body>
+</html>
