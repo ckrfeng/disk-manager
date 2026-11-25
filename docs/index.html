@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="description" content="DiskManager is a native macOS disk space analyzer. Scan a drive, explore large folders in a sunburst, and decide what to keep.">
+  <meta name="description" content="DiskManager is a native disk space analyzer for macOS and Windows. Scan a drive, explore large folders in a sunburst, and decide what to keep.">
   <meta name="color-scheme" content="dark">
   <meta name="theme-color" content="#131418">
-  <title>DiskManager — Disk space analyzer for macOS</title>
+  <title>DiskManager — Disk space analyzer for Mac and Windows</title>
   <link rel="icon" href="icon.png">
   <link rel="stylesheet" href="style.css">
   <script>document.documentElement.classList.add("js");</script>
@@ -20,7 +20,7 @@
       <a href="#faq">Questions</a>
       <a href="https://github.com/ckrfeng/disk-manager">GitHub ↗</a>
     </nav>
-    <a class="button small" href="https://github.com/ckrfeng/disk-manager/releases/latest/download/DiskManager-macOS.zip">Download</a>
+    <a class="button small" href="#install">Download</a>
   </header>
 
   <main>
@@ -30,9 +30,9 @@
         <p class="lede">Scan a drive or a folder and see what is taking up room, as an interactive sunburst. Click a slice to go deeper.</p>
         <div class="actions">
           <a class="button" href="https://github.com/ckrfeng/disk-manager/releases/latest/download/DiskManager-macOS.zip">Download for Mac</a>
-          <a class="quiet-link" href="https://github.com/ckrfeng/disk-manager/releases">All releases ↗</a>
+          <a class="button secondary" href="https://github.com/ckrfeng/disk-manager/releases/latest/download/DiskManager-Windows-x64.exe">Download for Windows</a>
         </div>
-        <p class="requirement">macOS 14 or later · Apple silicon and Intel</p>
+        <p class="requirement">macOS 14 or later, Apple silicon and Intel · Windows 10 or 11, 64-bit · <a class="quiet-link" href="https://github.com/ckrfeng/disk-manager/releases">All releases ↗</a></p>
       </div>
 
       <div class="app-window home-window" data-ui role="img" aria-label="DiskManager's home screen, listing three drives with their free space and a Scan button for each">
@@ -292,16 +292,17 @@
     </section>
 
     <section class="frame install reveal" id="install" aria-labelledby="install-title">
-      <h2 id="install-title">Install on your Mac</h2>
+      <h2 id="install-title">Install</h2>
       <div class="install-body">
         <ol>
-          <li>Download and unzip <strong>DiskManager-macOS.zip</strong>.</li>
-          <li>Move <strong>DiskManager.app</strong> to Applications and open it.</li>
-          <li>Choose a drive, or drop a folder onto the window, to start a scan.</li>
+          <li>On a Mac, download and unzip <strong><a href="https://github.com/ckrfeng/disk-manager/releases/latest/download/DiskManager-macOS.zip">DiskManager-macOS.zip</a></strong>, then move <strong>DiskManager.app</strong> to Applications.</li>
+          <li>On Windows, download <strong><a href="https://github.com/ckrfeng/disk-manager/releases/latest/download/DiskManager-Windows-x64.exe">DiskManager-Windows-x64.exe</a></strong>. It is a single file with nothing to install.</li>
+          <li>Open DiskManager and choose a drive, or drop a folder onto the window, to start a scan.</li>
         </ol>
         <div>
-          <p>The app is ad-hoc signed and not notarized by Apple. If macOS blocks the first launch, check that the zip came from this project, then follow <a href="https://support.apple.com/en-us/102445">Apple’s instructions</a>.</p>
-          <p><a href="https://github.com/ckrfeng/disk-manager/releases/latest/download/DiskManager-macOS.zip.sha256">Download the SHA-256 checksum</a></p>
+          <p>The Mac app is ad-hoc signed and not notarized by Apple. If macOS blocks the first launch, check that the zip came from this project, then follow <a href="https://support.apple.com/en-us/102445">Apple’s instructions</a>.</p>
+          <p>The Windows app is not code-signed, so Windows may show “Windows protected your PC” the first time. Choose <strong>More info</strong>, then <strong>Run anyway</strong>.</p>
+          <p>SHA-256 checksums: <a href="https://github.com/ckrfeng/disk-manager/releases/latest/download/DiskManager-macOS.zip.sha256">Mac</a> · <a href="https://github.com/ckrfeng/disk-manager/releases/latest/download/DiskManager-Windows-x64.exe.sha256">Windows</a></p>
         </div>
       </div>
     </section>
@@ -310,11 +311,11 @@
       <h2 id="faq-title">Questions</h2>
       <details>
         <summary>Does it upload my files?</summary>
-        <p>No. File names, paths and sizes are processed on your Mac. The app has no analytics and uploads no scan results.</p>
+        <p>No. File names, paths and sizes are processed on your computer. The app has no analytics and uploads no scan results.</p>
       </details>
       <details>
         <summary>What happens when I delete something?</summary>
-        <p>Items sent to the Trash free up space once you empty the Trash. Permanent deletion cannot be undone, so the app asks you to choose it explicitly.</p>
+        <p>Items sent to the Trash (or Recycle Bin on Windows) free up space once you empty it. Permanent deletion cannot be undone, so the app asks you to choose it explicitly.</p>
       </details>
       <details>
         <summary>Why does macOS block it the first time?</summary>
@@ -325,8 +326,8 @@
         <p>Only for an administrator scan or when removing a snapshot. The app asks first.</p>
       </details>
       <details>
-        <summary>Which Macs does it run on?</summary>
-        <p>macOS 14 Sonoma or later, on Apple silicon and Intel Macs.</p>
+        <summary>Which computers does it run on?</summary>
+        <p>macOS 14 Sonoma or later, on Apple silicon and Intel Macs, and 64-bit Windows 10 or 11.</p>
       </details>
     </section>
 
@@ -334,6 +335,7 @@
       <h2 id="closing-title">Find out where your space went.</h2>
       <div class="actions">
         <a class="button" href="https://github.com/ckrfeng/disk-manager/releases/latest/download/DiskManager-macOS.zip">Download for Mac</a>
+        <a class="button secondary" href="https://github.com/ckrfeng/disk-manager/releases/latest/download/DiskManager-Windows-x64.exe">Download for Windows</a>
         <a class="quiet-link" href="https://github.com/ckrfeng/disk-manager">Source on GitHub ↗</a>
       </div>
     </section>

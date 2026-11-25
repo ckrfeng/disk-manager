@@ -1,8 +1,8 @@
 # DiskManager
 
-DiskManager is a native macOS app that shows what’s taking up your storage. Scan a drive or folder, then click through an interactive sunburst chart to find the files and folders using the most space.
+DiskManager is a native macOS and Windows app that shows what’s taking up your storage. Scan a drive or folder, then click through an interactive sunburst chart to find the files and folders using the most space.
 
-[**Download for macOS**](https://github.com/ckrfeng/disk-manager/releases/latest) · [Download page](https://ckrfeng.github.io/disk-manager/) · [Report an issue](https://github.com/ckrfeng/disk-manager/issues/new)
+[**Download for macOS**](https://github.com/ckrfeng/disk-manager/releases/latest) · [**Download for Windows**](https://github.com/ckrfeng/disk-manager/releases/latest) · [Download page](https://ckrfeng.github.io/disk-manager/) · [Report an issue](https://github.com/ckrfeng/disk-manager/issues/new)
 
 ## Install
 
@@ -39,9 +39,16 @@ open build/DiskManager.app
 
 The project uses SwiftUI and Swift Package Manager. The scanner and filesystem logic live in [DiskCore](Sources/DiskCore/), and the app interface lives in [DiskManager](Sources/DiskManager/).
 
-## Windows (preview)
+## Windows
 
-A native Windows version (WPF, .NET 10) lives in [Windows](Windows/). It has the same drive list, sunburst chart, collector, and administrator scans, and moves items to the Recycle Bin instead of the Trash. There is no Windows download yet; build it from source with the [.NET 10 SDK](https://dotnet.microsoft.com/download):
+DiskManager also runs on **64-bit Windows 10 and 11**. It has the same drive list, sunburst chart, collector, and administrator scans, and moves items to the Recycle Bin instead of the Trash.
+
+1. Download `DiskManager-Windows-x64.exe` from the [latest GitHub release](https://github.com/ckrfeng/disk-manager/releases/latest). It is a single file and needs nothing else installed.
+2. Open it. The app is not code-signed, so Windows may show “Windows protected your PC” the first time. Choose **More info**, then **Run anyway**.
+
+To check the download, run `certutil -hashfile DiskManager-Windows-x64.exe SHA256` and compare it with `DiskManager-Windows-x64.exe.sha256`.
+
+The Windows version is a separate C# (WPF, .NET 10) codebase in [Windows](Windows/). To build it from source with the [.NET 10 SDK](https://dotnet.microsoft.com/download):
 
 ```sh
 cd Windows
@@ -49,7 +56,7 @@ dotnet test DiskCore.Tests
 dotnet run --project DiskManager
 ```
 
-See [Windows/README.md](Windows/README.md) for publishing and the differences from the Mac app.
+See [Windows/README.md](Windows/README.md) for the differences from the Mac app.
 
 ## License
 

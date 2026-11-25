@@ -1,8 +1,9 @@
 # Changelog
 
-## Unreleased
+## 1.1.0
 
-- Add a native Windows version (WPF, .NET 10) in `Windows/`, built from source for now.
+- Add a native Windows version for 64-bit Windows 10 and 11, downloaded as a single `.exe`.
+- The macOS app is unchanged apart from the version number.
 
 ## 1.0.0
 
