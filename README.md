@@ -39,6 +39,18 @@ open build/DiskManager.app
 
 The project uses SwiftUI and Swift Package Manager. The scanner and filesystem logic live in [DiskCore](Sources/DiskCore/), and the app interface lives in [DiskManager](Sources/DiskManager/).
 
+## Windows (preview)
+
+A native Windows version (WPF, .NET 10) lives in [Windows](Windows/). It has the same drive list, sunburst chart, collector, and administrator scans, and moves items to the Recycle Bin instead of the Trash. There is no Windows download yet; build it from source with the [.NET 10 SDK](https://dotnet.microsoft.com/download):
+
+```sh
+cd Windows
+dotnet test DiskCore.Tests
+dotnet run --project DiskManager
+```
+
+See [Windows/README.md](Windows/README.md) for publishing and the differences from the Mac app.
+
 ## License
 
 [MIT](LICENSE).

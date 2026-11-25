@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Add a native Windows version (WPF, .NET 10) in `Windows/`, built from source for now.
+
 ## 1.0.0
 
 - Scan mounted drives and folders on macOS.
