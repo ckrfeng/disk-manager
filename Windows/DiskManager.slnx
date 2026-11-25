@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="DiskCore/DiskCore.csproj" />
+  <Project Path="DiskCore.Tests/DiskCore.Tests.csproj" />
+  <Project Path="DiskManager/DiskManager.csproj" />
+</Solution>
